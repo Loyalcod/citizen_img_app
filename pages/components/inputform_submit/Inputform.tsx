@@ -115,7 +115,7 @@ function Inputform() {
 
         <div className='w-[90%] md:container'>
                 <div className='w-full md:w-[100%]  md:container flex justify-center items-center gap-6 py-[20px]  flex-col px-[20px] bg-black-900'>
-                    <button onClick={() => exportAsImage(exportDivImageRef.current, "card-image.png")}  className='w-[80%] text-white bg-red-700 h-[40px]'>Convert To Image</button>
+                    <button onClick={() => exportAsImage(exportDivImageRef.current!, "card-image.png")}  className='w-[80%] text-white bg-red-700 h-[40px]'>Convert To Image</button>
                 </div>
             </div>
         </>
