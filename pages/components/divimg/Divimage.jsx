@@ -2,11 +2,9 @@
 import Image from "next/image"
 import { useState } from "react"
 
-interface DivimageProps{
-    selectedImage: string
-}
 
-function Divimage(props: DivimageProps) {
+
+function Divimage(props) {
     const { selectedImage} = props
 
     

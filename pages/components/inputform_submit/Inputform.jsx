@@ -4,21 +4,17 @@ import { useState, ChangeEvent, useRef, LegacyRef } from "react";
 import Image from "next/image";
 import html2canvas from "html2canvas";
 
-type ImageState = string;
 
-interface DivImageProps {
-    targetImage: string,
-}
 
 function Inputform() {
-    const [targetImage, setTargetImage] = useState<string | null>(null);
-    const [textInput, setTextInput] = useState<string>('')
+    const [targetImage, setTargetImage] = useState(null);
+    const [textInput, setTextInput] = useState('')
     
-    const exportDivImageRef = useRef<HTMLDivElement>() as LegacyRef<HTMLDivElement>;
-    const [downloading, setDownloading] = useState<boolean>(false);
+    const exportDivImageRef = useRef();
+    const [downloading, setDownloading] = useState(false);
 
     // this is my converter
-    const exportAsImage = async (element: HTMLDivElement, imageFileName: string) => {
+    const exportAsImage = async (element, imageFileName) => {
         setDownloading(true);
     
         try {
@@ -34,7 +30,7 @@ function Inputform() {
         }
       };
     
-      const downloadImage = (blob: string, fileName: string) => {
+      const downloadImage = (blob, fileName) => {
         try {
           const fakeLink = document.createElement("a");
           fakeLink.style.display = "none";
@@ -53,7 +49,7 @@ function Inputform() {
     // end of my converter
 
 
-    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = (e) => {
         const file = e.target.files?.[0];
         const reader = new FileReader();
 
@@ -69,7 +65,7 @@ function Inputform() {
         }
     };
 
-    const colonIndex:number = textInput.indexOf(':')
+    const colonIndex= textInput.indexOf(':')
 
     const prefix = textInput.substring(0, colonIndex+1)
     const otherSentence = textInput.split(':')[1]
@@ -115,7 +111,7 @@ function Inputform() {
 
         <div className='w-[90%] md:container'>
                 <div className='w-full md:w-[100%]  md:container flex justify-center items-center gap-6 py-[20px]  flex-col px-[20px] bg-black-900'>
-                    <button onClick={() => exportAsImage(exportDivImageRef.current!, "card-image.png")}  className='w-[80%] text-white bg-red-700 h-[40px]'>Convert To Image</button>
+                    <button onClick={() => exportAsImage(exportDivImageRef.current, "card-image.png")}  className='w-[80%] text-white bg-red-700 h-[40px]'>Convert To Image</button>
                 </div>
             </div>
         </>
