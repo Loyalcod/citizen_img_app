@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, ChangeEvent, useRef } from "react";
+import { useState, ChangeEvent, useRef, LegacyRef } from "react";
 import Image from "next/image";
 import html2canvas from "html2canvas";
 
@@ -14,7 +14,7 @@ function Inputform() {
     const [targetImage, setTargetImage] = useState<string | null>(null);
     const [textInput, setTextInput] = useState<string>('')
     
-    const exportDivImageRef = useRef<HTMLDivElement>();
+    const exportDivImageRef = useRef<HTMLDivElement>() as LegacyRef<HTMLDivElement>;
     const [downloading, setDownloading] = useState<boolean>(false);
 
     // this is my converter
